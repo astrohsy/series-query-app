@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
 import {Text, Card, CardItem, Body, Content} from 'native-base';
+import {observer} from 'mobx-react';
+import esStore from '../stores/esStore';
 
 const dataArray = [
   {title: 'First Element', content: 'Lorem ipsum dolor sit amet'},
@@ -8,25 +10,19 @@ const dataArray = [
   {title: 'Third Element', content: 'Lorem ipsum dolor sit amet'},
 ];
 
+@observer
 export default class AppBody extends Component {
   constructor(props) {
     super(props);
     this.state = {isSearching: false, text: ''};
-
-    for (var i = 0; i < 100; i++) {
-      dataArray.push({
-        title: i,
-        content: '1',
-      });
-    }
   }
 
   render() {
-    const tmp = dataArray.map(x => (
-      <Card key={x.title} style={styles.cardDesign}>
+    const tmp = esStore.phrases.map((x, i) => (
+      <Card key={i} style={styles.cardDesign}>
         <CardItem>
           <Body>
-            <Text>{x.title}</Text>
+            <Text>{x}</Text>
           </Body>
         </CardItem>
       </Card>

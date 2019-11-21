@@ -1,13 +1,10 @@
 import {observable} from 'mobx';
 class esStore {
-  @observable counter = 0;
-  increment() {
-    this.counter++;
-    console.log('increment', this.counter);
-  }
-  decrement() {
-    this.counter--;
-    console.log('decrement', this.counter);
+  @observable phrases = [];
+
+  updatePhrases(newPhrases) {
+    this.phrases = newPhrases;
+    console.log('increment', this.phrases);
   }
 }
 export default new esStore();

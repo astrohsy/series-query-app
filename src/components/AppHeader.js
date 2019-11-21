@@ -27,12 +27,10 @@ export default class AppHeader extends Component {
   }
 
   _onPressButton() {
-    esStore.increment();
     this.setState({isSearching: true, text: ''});
   }
 
   _onCancelButton() {
-    esStore.increment();
     this.setState({isSearching: false, text: ''});
   }
 
@@ -49,7 +47,7 @@ export default class AppHeader extends Component {
     })
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        esStore.updatePhrases(responseJson);
       })
       .catch(error => {
         console.error(error);
