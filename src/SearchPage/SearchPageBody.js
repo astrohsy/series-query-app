@@ -10,6 +10,7 @@ import {
   Left,
   Icon,
   Button,
+  Spinner,
 } from 'native-base';
 import {observer} from 'mobx-react';
 import esStore from '../stores/esStore';
@@ -23,7 +24,6 @@ export default class SearchPageBody extends Component {
   }
 
   _onPhrasePress(item) {
-    console.log(item);
     this.props.navigation.navigate('SearchDetails', {
       series: item.series,
       episode: item.episode,
@@ -32,6 +32,15 @@ export default class SearchPageBody extends Component {
   }
 
   render() {
+    if (esStore.searchPageLoading) {
+      return (
+        <Spinner
+          color="blue"
+          size="large"
+          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+        />
+      );
+    }
     const tmp = esStore.phrases.map((x, i) => (
       <Card key={i} style={styles.cardDesign}>
         <CardItem header bordered style={{height: 15}}>

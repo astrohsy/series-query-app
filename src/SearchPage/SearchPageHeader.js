@@ -36,6 +36,7 @@ export default class SearchPageHeader extends Component {
   }
 
   _onSearch() {
+    esStore.searchPageLoading = true;
     fetch(`${AppConfig.serverHost}/query`, {
       method: 'POST',
       headers: {
