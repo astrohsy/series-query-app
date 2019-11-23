@@ -14,6 +14,7 @@ import {
 import esStore from '../stores/esStore';
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
+import AppConfig from '../../config.js';
 
 @observer
 export default class AppHeader extends Component {
@@ -37,17 +38,18 @@ export default class AppHeader extends Component {
   _onSearch() {
     console.log('hello', this.state.text);
 
-    fetch('http://192.168.219.198:3000', {
+    fetch(`${AppConfig.serverHost}/query`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({phrase: 'Textual content'}),
+      body: JSON.stringify({phrase: this.state.text}),
     })
       .then(response => response.json())
       .then(responseJson => {
-        esStore.updatePhrases(responseJson);
+        console.log(responseJson);
+        esStore.updatePhrases(responseJson.data);
       })
       .catch(error => {
         console.error(error);
