@@ -85,7 +85,7 @@ export default class SearchPageHeader extends Component {
           </Button>
         </Left>
         <Body>
-          <Title>Sample</Title>
+          <Title>Search</Title>
         </Body>
         <Right>
           <Button onPress={this._onPressButton}>

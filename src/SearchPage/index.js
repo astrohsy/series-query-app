@@ -12,8 +12,8 @@ export default class SearchPage extends Component {
   render() {
     return (
       <Container>
-        <SearchPageHeader />
-        <SearchPageBody />
+        <SearchPageHeader navigation={this.props.navigation} />
+        <SearchPageBody navigation={this.props.navigation} />
       </Container>
     );
   }

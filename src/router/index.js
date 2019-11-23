@@ -5,11 +5,10 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import {createStackNavigator} from 'react-navigation-stack';
 
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-
 import Example from './Example';
 import SearchPage from '../SearchPage';
 import SideBar from '../SideBar';
+import SearchDetailPage from '../SearchPage/SearchDetailPage';
 
 const SearchStack = createStackNavigator({
   Search: {
@@ -19,8 +18,8 @@ const SearchStack = createStackNavigator({
       headerShown: false,
     },
   },
-  Details: {
-    screen: Example,
+  SearchDetails: {
+    screen: SearchDetailPage,
     navigationOptions: {
       headerTitle: 'Details',
     },

@@ -18,7 +18,17 @@ import esStore from '../stores/esStore';
 export default class SearchPageBody extends Component {
   constructor(props) {
     super(props);
-    this.state = {isSearching: false, text: ''};
+
+    this._onPhrasePress = this._onPhrasePress.bind(this);
+  }
+
+  _onPhrasePress(item) {
+    console.log(item);
+    this.props.navigation.navigate('SearchDetails', {
+      series: item.series,
+      episode: item.episode,
+      order: item.order,
+    });
   }
 
   render() {
@@ -47,7 +57,7 @@ export default class SearchPageBody extends Component {
             </Text>
           </Right>
         </CardItem>
-        <CardItem>
+        <CardItem button={true} onPress={() => this._onPhrasePress(x)}>
           <Body>
             <Text style={{fontSize: 15}}>{x.phrase}</Text>
           </Body>
