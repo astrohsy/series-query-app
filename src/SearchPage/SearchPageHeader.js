@@ -36,8 +36,6 @@ export default class SearchPageHeader extends Component {
   }
 
   _onSearch() {
-    console.log('hello', this.state.text);
-
     fetch(`${AppConfig.serverHost}/query`, {
       method: 'POST',
       headers: {
@@ -48,7 +46,6 @@ export default class SearchPageHeader extends Component {
     })
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
         esStore.updatePhrases(responseJson.data);
       })
       .catch(error => {

@@ -34,10 +34,10 @@ const SettingsStack = createStackNavigator({
       headerTitle: 'Setting',
     },
   },
-  Profile: {
+  Home: {
     screen: Example,
     navigationOptions: {
-      headerTitle: 'Profile',
+      headerTitle: 'Home',
     },
   },
 });
