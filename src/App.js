@@ -1,7 +1,7 @@
 import {Container} from 'native-base';
 import React, {Component} from 'react';
-import AppBody from './components/AppBody';
-import AppHeader from './components/AppHeader';
+
+import MyApp from './router/index';
 
 export default class App extends Component {
   constructor(props) {
@@ -9,11 +9,6 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <Container>
-        <AppHeader />
-        <AppBody />
-      </Container>
-    );
+    return <MyApp />;
   }
 }

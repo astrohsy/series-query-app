@@ -17,7 +17,7 @@ import React, {Component} from 'react';
 import AppConfig from '../../config.js';
 
 @observer
-export default class AppHeader extends Component {
+export default class SearchPageHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {isSearching: false, text: ''};
@@ -70,11 +70,9 @@ export default class AppHeader extends Component {
               autoFocus={true}
               onSubmitEditing={this._onSearch}
             />
-            <Icon
-              type="MaterialIcons"
-              name="clear"
-              onPress={this._onCancelButton}
-            />
+            <Button transparent onPress={this._onCancelButton}>
+              <Icon type="MaterialIcons" name="clear" />
+            </Button>
           </Item>
           <Button transparent>
             <Text>Search</Text>
@@ -93,10 +91,10 @@ export default class AppHeader extends Component {
           <Title>Sample</Title>
         </Body>
         <Right>
-          <Button transparent>
-            <Icon name="search" onPress={this._onPressButton} />
+          <Button onPress={this._onPressButton}>
+            <Icon name="search" />
           </Button>
-          <Button transparent>
+          <Button>
             <Icon name="more" />
           </Button>
         </Right>
