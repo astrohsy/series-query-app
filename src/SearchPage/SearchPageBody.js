@@ -11,6 +11,7 @@ import {
   Icon,
   Button,
   Spinner,
+  View,
 } from 'native-base';
 import {observer} from 'mobx-react';
 import esStore from '../stores/esStore';
@@ -40,7 +41,16 @@ export default class SearchPageBody extends Component {
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
         />
       );
+    } else if (esStore.phrases.length == 0) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 20, color: '#546E7A'}}>
+            No matching phrases!!!
+          </Text>
+        </View>
+      );
     }
+
     const tmp = esStore.phrases.map((x, i) => (
       <Card key={i} style={styles.cardDesign}>
         <CardItem header bordered style={{height: 15}}>
