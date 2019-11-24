@@ -10,6 +10,7 @@ import {
   Text,
   Title,
 } from 'native-base';
+import {StatusBar} from 'react-native';
 
 import esStore from '../stores/esStore';
 import {observer} from 'mobx-react';
@@ -24,6 +25,7 @@ export default class SearchPageHeader extends Component {
 
     this._onPressButton = this._onPressButton.bind(this);
     this._onCancelButton = this._onCancelButton.bind(this);
+    this._onMenuButton = this._onMenuButton.bind(this);
     this._onSearch = this._onSearch.bind(this);
   }
 
@@ -33,6 +35,10 @@ export default class SearchPageHeader extends Component {
 
   _onCancelButton() {
     this.setState({isSearching: false, text: ''});
+  }
+
+  _onMenuButton() {
+    this.props.navigation.openDrawer();
   }
 
   _onSearch() {
@@ -58,6 +64,7 @@ export default class SearchPageHeader extends Component {
     if (this.state.isSearching) {
       return (
         <Header searchBar rounded>
+          <StatusBar barStyle="light-content" />
           <Item>
             <Icon name="ios-search" />
             <Input
@@ -79,21 +86,18 @@ export default class SearchPageHeader extends Component {
       );
     }
     return (
-      <Header noLeft>
+      <Header>
         <Left>
-          <Button transparent>
-            <Icon name="arrow-back" />
+          <Button transparent onPress={this._onMenuButton}>
+            <Icon name="menu" />
           </Button>
         </Left>
-        <Body>
+        <Body style={{marginLeft: -15}}>
           <Title>Search</Title>
         </Body>
         <Right>
-          <Button onPress={this._onPressButton}>
+          <Button transparent onPress={this._onPressButton}>
             <Icon name="search" />
-          </Button>
-          <Button>
-            <Icon name="more" />
           </Button>
         </Right>
       </Header>
